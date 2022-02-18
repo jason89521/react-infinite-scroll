@@ -1,6 +1,6 @@
 # React Infinite Scroll Component
 
-A react library provides an react component that implements functionality of infinite scrolling.
+A react library provides a react component that implements functionality of infinite scrolling.
 
 ## Usage
 
@@ -57,11 +57,12 @@ function App() {
 
 ## Props
 
-| name         | type                                                                       | description                                                                                                   |
-| :----------- | :------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------ |
-| `isLoading`  | `boolean` **required**                                                     | Pass `true` when starting loading data; otherwise pass `false`                                                |
-| `hasMore`    | `boolean` **required**                                                     | Pass `true` when there is no more data to load; otherwise pass `false`                                        |
-| `loader`     | `React.ReactNode`                                                          | This property will be shown in the bottom when `isLoading` is `true`                                          |
-| `Item`       | `React.ForwardRefExoticComponent<T & React.RefAttributes<P>>` **required** | A custom component wrapped with `React.forwardRef`. This component will pass a callback ref to the last item. |
-| `itemsProps` | `T[]` **required**                                                         | Array of `Item`'s properties.                                                                                 |
-| `next`       | `() => unknown` **required**                                               | A function that will be called when the last item displayed in viewport                                       |
+| name         | type                                                                       | description                                                                                                                                                        |
+| :----------- | :------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `isLoading`  | `boolean` **required**                                                     | Pass `true` when starting loading data; otherwise pass `false`                                                                                                     |
+| `hasMore`    | `boolean` **required**                                                     | Pass `true` when there is no more data to load; otherwise pass `false`                                                                                             |
+| `loader`     | `React.ReactNode`                                                          | This property will be shown in the bottom when `isLoading` is `true`                                                                                               |
+| `Item`       | `React.ForwardRefExoticComponent<T & React.RefAttributes<P>>` **required** | A custom component wrapped with `React.forwardRef`. Make sure that the custom component pass ref to its container element, otherwise this component will not work. |
+| `itemsProps` | `T[]` **required**                                                         | Array of `Item`'s properties.                                                                                                                                      |
+| `next`       | `() => unknown` **required**                                               | A function that will be called when the last item displayed in viewport                                                                                            |
+

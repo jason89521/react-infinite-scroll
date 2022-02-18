@@ -1,24 +1,28 @@
 import React, { useCallback, useRef } from 'react';
 
+interface Data<T> {
+  key?: string;
+  props: T;
+}
+
 interface Props<T, P extends HTMLElement> {
   isLoading: boolean;
   hasMore: boolean;
-  loader?: React.ReactNode;
   Item: React.ForwardRefExoticComponent<T & React.RefAttributes<P>>;
-  itemsProps: T[];
+  itemData: Data<T>[];
   next: () => unknown;
 }
+
 function InfiniteScroll<T, P extends HTMLElement>({
   isLoading,
   hasMore,
-  loader,
   Item,
-  itemsProps,
+  itemData,
   next,
 }: Props<T, P>) {
   const observer = useRef<IntersectionObserver>();
   const lastRef = useCallback(
-    element => {
+    (element: HTMLElement | null) => {
       if (isLoading) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver(entries => {
@@ -31,18 +35,14 @@ function InfiniteScroll<T, P extends HTMLElement>({
     [hasMore, isLoading, next]
   );
 
-  const renderedItems = itemsProps.map((props, idx) => {
-    const isLast = itemsProps.length - 1 === idx;
+  const renderedItems = itemData.map((datum, idx) => {
+    const isLast = itemData.length - 1 === idx;
+    const key = datum.key !== undefined ? datum.key : idx;
     const ref = isLast ? lastRef : null;
-    return <Item key={idx} ref={ref} {...props} />;
+    return <Item key={key} ref={ref} {...datum.props} />;
   });
 
-  return (
-    <>
-      {renderedItems}
-      {isLoading && loader}
-    </>
-  );
+  return <>{renderedItems}</>;
 }
 
 export default InfiniteScroll;

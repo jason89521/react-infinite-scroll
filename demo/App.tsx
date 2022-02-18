@@ -1,5 +1,6 @@
 import './App.css';
 import InfiniteScroll from '../src';
+
 import React, { useState, useCallback } from 'react';
 
 function Item(props: { bar: number }, ref: React.ForwardedRef<HTMLDivElement>) {
@@ -30,23 +31,27 @@ function App() {
     }, 1000);
   }, [page]);
 
-  const createItemsProps = () => {
-    const itemsProps = [];
+  const createItemData = () => {
+    const data = [];
     for (let i = 0; i < page * 10; i++) {
-      itemsProps.push({ bar: i });
+      data.push({
+        key: i.toString(),
+        props: {
+          bar: i,
+        },
+      });
     }
-    return itemsProps;
+    return data;
   };
 
   return (
     <div className="box">
       <InfiniteScroll
-        itemsProps={createItemsProps()}
+        itemData={createItemData()}
         Item={WithRef}
         isLoading={isLoading}
         hasMore={hasMore}
         next={loadNext}
-        loader="loading..."
       />
     </div>
   );
