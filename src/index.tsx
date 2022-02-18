@@ -1,14 +1,21 @@
 import React, { useCallback, useRef } from 'react';
 
-interface Props<T, P> {
+interface Props<T, P extends HTMLElement> {
   isLoading: boolean;
   hasMore: boolean;
-  next: () => unknown;
   loader?: React.ReactNode;
-  itemsProps: T[];
   Item: React.ForwardRefExoticComponent<T & React.RefAttributes<P>>;
+  itemsProps: T[];
+  next: () => unknown;
 }
-function InfiniteScroll<T, P>({ isLoading, hasMore, Item, next, itemsProps }: Props<T, P>) {
+function InfiniteScroll<T, P extends HTMLElement>({
+  isLoading,
+  hasMore,
+  loader,
+  Item,
+  itemsProps,
+  next,
+}: Props<T, P>) {
   const observer = useRef<IntersectionObserver>();
   const lastRef = useCallback(
     element => {
@@ -30,7 +37,12 @@ function InfiniteScroll<T, P>({ isLoading, hasMore, Item, next, itemsProps }: Pr
     return <Item key={idx} ref={ref} {...props} />;
   });
 
-  return <>{renderedItems}</>;
+  return (
+    <>
+      {renderedItems}
+      {isLoading && loader}
+    </>
+  );
 }
 
 export default InfiniteScroll;

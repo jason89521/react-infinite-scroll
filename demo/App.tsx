@@ -47,7 +47,7 @@ function App() {
         hasMore={hasMore}
         next={loadNext}
         loader="loading..."
-      ></InfiniteScroll>
+      />
     </div>
   );
 }

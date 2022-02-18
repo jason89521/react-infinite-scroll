@@ -1,9 +1,20 @@
 {
-  "name": "react-infinite-scroll",
+  "name": "@yuxuan-zheng/react-infinite-scroll",
   "version": "0.0.0",
-  "files": [
-    "dist"
+  "description": "A react compontent implements infinite scroll functionality",
+  "keywords": [
+    "react",
+    "infinite-scroll",
+    "ref",
+    "IntersectionObserver"
   ],
+  "files": [
+    "dist",
+    "type"
+  ],
+  "main": "dist/main.umd.js",
+  "module": "dist/main.es.js",
+  "types": "type/index.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

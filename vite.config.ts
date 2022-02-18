@@ -9,6 +9,9 @@ export default defineConfig({
       name: 'InfiniteScroll',
       fileName: type => `main.${type}.js`,
     },
+    rollupOptions: {
+      external: ['react'],
+    },
   },
   plugins: [react()],
 });
