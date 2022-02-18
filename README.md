@@ -5,14 +5,18 @@ A react library provides a react component that implements functionality of infi
 ## Usage
 
 ```tsx
-function Item(props: { bar: number }, ref: React.ForwardedRef<HTMLDivElement>) {
+interface ItemProps {
+  foo: string;
+  bar: number;
+}
+
+function Item(props: ItemProps, ref: React.ForwardedRef<HTMLDivElement>) {
   return (
-    <div ref={ref}>
-      {props.bar}
+    <div className="item" ref={ref}>
+      {props.foo}, {props.bar}
     </div>
   );
 }
-const WithRef = React.forwardRef(Item);
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -32,23 +36,28 @@ function App() {
     }, 1000);
   };
 
-  const createItemsProps = () => {
-    const itemsProps = [];
+  const createItemData = () => {
+    const data = [];
     for (let i = 0; i < page * 10; i++) {
-      itemsProps.push({ bar: i });
+      data.push({
+        key: i.toString(),
+        props: {
+          foo: 'hello',
+          bar: i,
+        },
+      });
     }
-    return itemsProps;
+    return data;
   };
 
   return (
     <div className="box">
       <InfiniteScroll
-        itemsProps={createItemsProps()}
-        Item={WithRef}
+        itemData={createItemData()}
+        Item={React.forwardRef(Item)}
         isLoading={isLoading}
         hasMore={hasMore}
         next={loadNext}
-        loader="loading..."
       />
     </div>
   );
