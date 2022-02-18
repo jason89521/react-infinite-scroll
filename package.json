@@ -1,6 +1,6 @@
 {
   "name": "@yuxuan-zheng/react-infinite-scroll",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A react compontent implements infinite scroll functionality",
   "keywords": [
     "react",
@@ -22,6 +22,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && tsc --project tsconfig.lib.json",
+    "prepare": "yarn build",
     "preview": "vite preview"
   },
   "devDependencies": {
