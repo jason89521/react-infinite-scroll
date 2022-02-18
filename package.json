@@ -15,9 +15,13 @@
   "main": "dist/main.umd.js",
   "module": "dist/main.es.js",
   "types": "type/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jason89521/react-infinte-scroll"
+  },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && tsc --project tsconfig.lib.json",
     "preview": "vite preview"
   },
   "devDependencies": {
