@@ -95,3 +95,6 @@ interface Props<T, P extends HTMLElement> {
 | `itemData`  | This component will use the `key` property to help React identify which items have changed, added or removed. If the `key` property is not specified, this component will use the index of item as a key. |
 | `next`      | Function that will be called when the last item displayed in viewport                                                                                                                                     |
 
+## Todos
+
+- [ ] Demo page
