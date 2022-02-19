@@ -5,8 +5,8 @@
   "keywords": [
     "react",
     "infinite-scroll",
-    "ref",
-    "IntersectionObserver"
+    "react-component",
+    "react-infinite-scroll"
   ],
   "files": [
     "dist",
