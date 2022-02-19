@@ -97,4 +97,6 @@ interface Props<T, P extends HTMLElement> {
 
 ## Todos
 
-- [ ] Demo page
+- [ ] Completed demo page
+- [ ] Custom IntersectionObserver options
+- [ ] Custom order to trigger calling next()
