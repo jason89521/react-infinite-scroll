@@ -1,5 +1,6 @@
 import './App.css';
-import InfiniteScroll from '../../src/index';
+import InfiniteScroll from 'lib/index';
+import Foo from 'demo/Foo';
 
 import React, { useState } from 'react';
 
@@ -50,6 +51,7 @@ function App() {
 
   return (
     <div className="box">
+      <Foo />
       <InfiniteScroll
         itemData={createItemData()}
         Item={React.forwardRef(Item)}
