@@ -1,5 +1,5 @@
 import './App.css';
-import InfiniteScroll from '../src';
+import InfiniteScroll from '../../src/index';
 
 import React, { useState } from 'react';
 
