@@ -18,6 +18,6 @@
     "declarationDir": "type",
     "outDir": "temp"
   },
-  "include": ["src/index.tsx"],
+  "include": ["src/lib/index.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

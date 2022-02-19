@@ -13,7 +13,7 @@ dist-ssr
 *.local
 temp
 type
-test
+/demo
 
 # Editor directories and files
 .vscode/*
