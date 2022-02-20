@@ -9,61 +9,52 @@ A react library provides a react component that implements functionality of infi
 ## Usage
 
 ```tsx
-interface ItemProps {
-  foo: string;
-  bar: number;
+interface Data {
+  id: number;
+  username: string;
 }
 
-function Item(props: ItemProps, ref: React.ForwardedRef<HTMLDivElement>) {
+function Item(props: Data, ref: React.ForwardedRef<HTMLLIElement>) {
   return (
-    <div className="item" ref={ref}>
-      {props.foo}, {props.bar}
-    </div>
+    <li ref={ref}>
+      <span>{props.username}</span>
+    </li>
   );
 }
 
-function App() {
+function InfiniteList() {
+  const [data, setData] = useState<Data[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
-  const [page, setPage] = useState(1);
+  const [page, setpage] = useState(1);
 
-  const loadNext = () => {
+  useEffect(() => {
+    fakeApi(0).then(res => {
+      setData(res);
+    });
+  }, []);
+
+  const fetchNext = async () => {
     setIsLoading(true);
-
-    setTimeout(() => {
-      setIsLoading(false);
-      if (page === 3) {
-        setHasMore(false);
-        return;
-      }
-      setPage(page + 1);
-    }, 1000);
+    const newData = await fakeApi(page);
+    setData([...data, ...newData]);
+    setpage(page + 1);
+    setIsLoading(false);
   };
 
-  const createItemData = () => {
-    const data = [];
-    for (let i = 0; i < page * 10; i++) {
-      data.push({
-        key: i.toString(),
-        props: {
-          foo: 'hello',
-          bar: i,
-        },
-      });
-    }
-    return data;
-  };
+  const itemData = data.map(datum => ({
+    props: datum,
+  }));
 
   return (
-    <div className="box">
+    <ul>
       <InfiniteScroll
-        itemData={createItemData()}
-        Item={React.forwardRef(Item)}
         isLoading={isLoading}
-        hasMore={hasMore}
-        next={loadNext}
+        hasMore={true}
+        Item={React.forwardRef(Item)}
+        itemData={itemData}
+        next={fetchNext}
       />
-    </div>
+    </ul>
   );
 }
 ```
