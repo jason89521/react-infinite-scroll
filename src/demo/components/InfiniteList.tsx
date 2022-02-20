@@ -38,7 +38,7 @@ function InfiniteList({ className }: InfiniteScrollProps) {
   }));
 
   return (
-    <ul className={`${className} h-96 max-h-[48rem] overflow-auto space-y-2`}>
+    <ul className={`${className} h-[50vh] max-h-[50vh] overflow-auto space-y-2`}>
       <InfiniteScroll
         isLoading={isLoading}
         hasMore={true}

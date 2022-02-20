@@ -10,7 +10,7 @@ function App() {
       <Header />
 
       <Section>
-        <Feature className="flex-1 xl:flex-grow-0 text-emerald-400" title="No Extra Element">
+        <Feature className="flex-1 text-emerald-400" title="No Extra Element">
           This component will not add extra HTML element to your DOM, so you don't need to worry
           about making extra styling to your components.
         </Feature>

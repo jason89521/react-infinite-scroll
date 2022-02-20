@@ -2,10 +2,10 @@ import React from 'react';
 
 function Header() {
   return (
-    <header className="flex flex-col items-center justify-center gap-10 bg-emerald-400 h-[40rem] text-slate-50">
+    <header className="flex flex-col items-center justify-center gap-10 bg-emerald-400 min-h-[30rem] text-slate-50 text-center">
       <h1 className="flex flex-col items-center justify-center gap-8">
-        <span className="text-8xl">React-Infinite-Scroll</span>
-        <span className="text-2xl">
+        <span className="text-8xl xl:text-6xl">React-Infinite-Scroll</span>
+        <span className="text-2xl xl:text-xl">
           A React component implemented with infinitely scrolling functionality
         </span>
       </h1>

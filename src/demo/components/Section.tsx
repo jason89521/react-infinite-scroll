@@ -6,7 +6,7 @@ interface SectionProps {
 
 function Section({ children }: SectionProps) {
   return (
-    <section className="flex justify-center items-center xl:items-stretch gap-20 xl:gap-10 p-20 lg:p-10 overflow-auto min-h-[50%] xl:flex-col">
+    <section className="flex items-center justify-center gap-10 p-20 xl:flex-col xl:items-stretch">
       {children}
     </section>
   );
