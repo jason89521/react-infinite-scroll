@@ -22,8 +22,8 @@
   "homepage": "https://reactinfinitescroll.vercel.app/",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && tsc --project tsconfig.lib.json",
-    "build:demo": "tsc && vite build --mode demo",
+    "build": "tsc && vite build --mode lib && tsc --project tsconfig.lib.json",
+    "build:demo": "tsc && vite build",
     "prepare": "yarn build",
     "preview": "vite preview"
   },
