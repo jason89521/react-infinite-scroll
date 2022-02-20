@@ -1,64 +1,39 @@
-import './App.css';
-import InfiniteScroll from 'lib/index';
-import Foo from 'demo/Foo';
-
-import React, { useState } from 'react';
-
-interface ItemProps {
-  foo: string;
-  bar: number;
-}
-
-function Item(props: ItemProps, ref: React.ForwardedRef<HTMLDivElement>) {
-  return (
-    <div className="item" ref={ref}>
-      {props.foo}, {props.bar}
-    </div>
-  );
-}
+import React from 'react';
+import Infinitelist from 'demo/components/InfiniteList';
+import Section from 'demo/components/Section';
+import Feature from './components/Feature';
 
 function App() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
-  const [page, setPage] = useState(1);
-
-  const loadNext = () => {
-    setIsLoading(true);
-
-    setTimeout(() => {
-      setIsLoading(false);
-      if (page === 3) {
-        setHasMore(false);
-        return;
-      }
-      setPage(page + 1);
-    }, 1000);
-  };
-
-  const createItemData = () => {
-    const data = [];
-    for (let i = 0; i < page * 10; i++) {
-      data.push({
-        key: i.toString(),
-        props: {
-          foo: 'hello',
-          bar: i,
-        },
-      });
-    }
-    return data;
-  };
-
   return (
-    <div className="box">
-      <Foo />
-      <InfiniteScroll
-        itemData={createItemData()}
-        Item={React.forwardRef(Item)}
-        isLoading={isLoading}
-        hasMore={hasMore}
-        next={loadNext}
-      />
+    <div className="h-screen overflow-auto">
+      <header className="flex flex-col justify-center items-center gap-10 bg-emerald-400 h-4/5 text-slate-100">
+        <h1 className="flex flex-col justify-center items-center gap-8">
+          <span className="text-8xl">React-Infinite-Scroll</span>
+          <span className="text-2xl">
+            A React component implemented with infinitely scrolling functionality
+          </span>
+        </h1>
+        <a
+          className="px-10 py-5 bg-slate-50 text-emerald-400 text-2xl rounded hover:scale-110 transition capitalize"
+          href="https://github.com/jason89521/react-infinte-scroll"
+          target="_blank"
+          rel="noreferrer"
+        >
+          See documentation
+        </a>
+      </header>
+
+      <Section>
+        <Feature className="flex-1 text-emerald-400" title="No Extra Element">
+          This component will not add extra HTML element to your DOM, so you don't need to worry
+          about making extra styling to your components.
+        </Feature>
+        <Infinitelist className="flex-1" />
+      </Section>
+
+      <footer className="flex justify-center items-center bg-slate-500 text-slate-50 text-xl h-24">
+        Copyright &copy; Xuan
+      </footer>
     </div>
   );
 }
