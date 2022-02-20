@@ -8,7 +8,7 @@ interface InfiniteScrollProps {
 
 function Item(props: Data, ref: React.ForwardedRef<HTMLLIElement>) {
   return (
-    <li ref={ref} className="flex items-center bg-emerald-400 text-slate-50 text-2xl p-5">
+    <li ref={ref} className="flex items-center p-5 text-2xl bg-emerald-400 text-slate-50">
       <span>{props.username}</span>
     </li>
   );
@@ -38,7 +38,7 @@ function InfiniteList({ className }: InfiniteScrollProps) {
   }));
 
   return (
-    <ul className={`${className} h-full overflow-auto space-y-2`}>
+    <ul className={`${className} h-96 max-h-[48rem] overflow-auto space-y-2`}>
       <InfiniteScroll
         isLoading={isLoading}
         hasMore={true}
