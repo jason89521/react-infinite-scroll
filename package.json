@@ -19,6 +19,7 @@
     "type": "git",
     "url": "https://github.com/jason89521/react-infinte-scroll"
   },
+  "homepage": "https://react-infinte-scroll.vercel.app/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && tsc --project tsconfig.lib.json",

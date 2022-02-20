@@ -15,7 +15,7 @@ function App() {
         </h1>
         <a
           className="px-10 py-5 bg-slate-50 text-emerald-400 text-2xl rounded hover:scale-110 transition capitalize"
-          href="https://react-infinte-scroll.vercel.app/"
+          href="https://github.com/jason89521/react-infinte-scroll"
           target="_blank"
           rel="noreferrer"
         >
