@@ -36,9 +36,9 @@ export default defineConfig(({ command, mode }) => {
   // run yarn dev
   if (command === 'serve') return devConfig;
 
-  // run yarn build:demo
-  if (mode === 'demo') return buildDemoConfig;
-
   // run yarn build
-  return buildLibConfig;
+  if (mode === 'lib') return buildLibConfig;
+  
+  // run yarn build:demo
+  return buildDemoConfig;
 });
