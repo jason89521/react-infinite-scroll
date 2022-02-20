@@ -1,64 +1,20 @@
-import './App.css';
-import InfiniteScroll from 'lib/index';
-import Foo from 'demo/Foo';
-
-import React, { useState } from 'react';
-
-interface ItemProps {
-  foo: string;
-  bar: number;
-}
-
-function Item(props: ItemProps, ref: React.ForwardedRef<HTMLDivElement>) {
-  return (
-    <div className="item" ref={ref}>
-      {props.foo}, {props.bar}
-    </div>
-  );
-}
+import React from 'react';
 
 function App() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
-  const [page, setPage] = useState(1);
-
-  const loadNext = () => {
-    setIsLoading(true);
-
-    setTimeout(() => {
-      setIsLoading(false);
-      if (page === 3) {
-        setHasMore(false);
-        return;
-      }
-      setPage(page + 1);
-    }, 1000);
-  };
-
-  const createItemData = () => {
-    const data = [];
-    for (let i = 0; i < page * 10; i++) {
-      data.push({
-        key: i.toString(),
-        props: {
-          foo: 'hello',
-          bar: i,
-        },
-      });
-    }
-    return data;
-  };
-
   return (
-    <div className="box">
-      <Foo />
-      <InfiniteScroll
-        itemData={createItemData()}
-        Item={React.forwardRef(Item)}
-        isLoading={isLoading}
-        hasMore={hasMore}
-        next={loadNext}
-      />
+    <div className="h-screen overflow-auto">
+      <header className="bg-emerald-400 h-3/5 text-slate-100">
+        <h1 className="min-h-full flex flex-col justify-center items-center gap-8">
+          <span className="text-8xl">React-Infinite-Scroll</span>
+          <span className="text-2xl">
+            A React component implemented with infinitely scrolling functionality
+          </span>
+        </h1>
+      </header>
+
+      <footer className="flex justify-center items-center bg-slate-500 text-slate-50 text-xl h-24">
+        Copyright &copy; Xuan
+      </footer>
     </div>
   );
 }
