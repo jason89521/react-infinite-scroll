@@ -4,9 +4,9 @@ module.exports = {
   theme: {
     extend: {},
     screens: {
-      '2xl': { max: '56.25em' },
-      xl: { max: '43.75em' },
-      lg: { max: '34.375em' },
+      '2xl': { max: '75em' },
+      xl: { max: '46.875em' },
+      lg: { max: '31.25em' },
       md: { max: '28.125em' },
       sm: { max: '639px' },
     },
