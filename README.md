@@ -42,6 +42,7 @@ function InfiniteList() {
   };
 
   const itemData = data.map(datum => ({
+    key: datum.id,
     props: datum,
   }));
 
@@ -63,7 +64,7 @@ function InfiniteList() {
 
 ```ts
 interface Data<T> {
-  key?: string;
+  key?: React.Key;
   props: T;
 }
 
