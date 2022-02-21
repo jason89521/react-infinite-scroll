@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import InfiniteScroll from 'lib';
-import fakeApi, { Data } from 'demo/fakeApi';
+import InfiniteScroll from 'InfiniteScroll';
+import fakeApi, { Data } from 'fakeApi';
 
 interface InfiniteScrollProps {
   className?: string;
