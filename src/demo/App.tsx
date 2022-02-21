@@ -1,8 +1,8 @@
 import React from 'react';
-import Infinitelist from 'demo/components/InfiniteList';
-import Header from './components/Header';
-import Section from 'demo/components/Section';
-import Feature from './components/Feature';
+import Infinitelist from 'components/InfiniteList';
+import Header from 'components/Header';
+import Section from 'components/Section';
+import Feature from 'components/Feature';
 
 function App() {
   return (
