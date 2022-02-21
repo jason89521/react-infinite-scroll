@@ -34,6 +34,7 @@ function InfiniteList({ className }: InfiniteScrollProps) {
   };
 
   const itemData = data.map(datum => ({
+    key: datum.id,
     props: datum,
   }));
 

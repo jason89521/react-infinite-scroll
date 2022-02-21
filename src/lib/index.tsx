@@ -1,7 +1,7 @@
 import React, { useCallback, useRef } from 'react';
 
 interface Data<T> {
-  key?: string;
+  key?: React.Key;
   props: T;
 }
 
@@ -36,8 +36,8 @@ function InfiniteScroll<T, P extends HTMLElement>({
   );
 
   const renderedItems = itemData.map((datum, idx) => {
-    const isLast = itemData.length - 1 === idx;
     const key = datum.key !== undefined ? datum.key : idx;
+    const isLast = itemData.length - 1 === idx;
     const ref = isLast ? lastRef : null;
     return <Item key={key} ref={ref} {...datum.props} />;
   });
