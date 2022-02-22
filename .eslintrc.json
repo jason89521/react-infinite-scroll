@@ -20,5 +20,6 @@
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "react/no-unescaped-entities": "off"
-  }
+  },
+  "ignorePatterns": "website"
 }
