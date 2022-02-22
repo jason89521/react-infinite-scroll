@@ -26,13 +26,9 @@ const config = {
         docs: {
           path: '../docs',
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          editUrl: 'https://github.com/jason89521/react-infinite-scroll/website',
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
-          editUrl: 'https://github.com/jason89521/react-infinite-scroll/website',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
