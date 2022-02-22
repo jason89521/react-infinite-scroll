@@ -7,16 +7,17 @@ const FeatureList = [
     title: 'Easy to Use',
     description: (
       <>
-        React Infinite Scroll was designed to quickly setup infinitely scrolling functionality.
+        React Infinite Scroll was designed to quickly setup infinitely scrolling functionality. You
+        just need to pass 5 properties to make it work.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'No Pollution',
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go ahead and move your
-        docs into the <code>docs</code> directory.
+        There is no extra HTML element will be added to your DOM structure, so you don't have to
+        worry about doing extra styling.
       </>
     ),
   },

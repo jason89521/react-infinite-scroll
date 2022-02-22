@@ -32,8 +32,7 @@ const config = {
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
-          editUrl:
-            'https://github.com/jason89521/react-infinite-scroll/website',
+          editUrl: 'https://github.com/jason89521/react-infinite-scroll/website',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -56,9 +55,9 @@ const config = {
             type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Docs',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          { to: '/blog', label: 'Blog', position: 'left' },
           {
             href: 'https://github.com/jason89521/react-infinite-scroll',
             label: 'GitHub',
@@ -70,43 +69,16 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Tutorial',
-                to: '/docs',
-              },
-            ],
+            label: 'Docs',
+            to: 'docs',
           },
           {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
-            ],
+            label: 'Blog',
+            to: 'blog',
           },
           {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/jason89521/react-infinite-scroll',
-              },
-            ],
+            label: 'GitHub',
+            href: 'https://github.com/jason89521/react-infinite-scroll',
           },
         ],
         copyright: `Copyright © ${new Date().getFullYear()} Xuan. Built with Docusaurus.`,
