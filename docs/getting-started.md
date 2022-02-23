@@ -19,14 +19,18 @@ npm install @yuxuan-zheng/react-infinite-scroll
 To use React Infinite Scroll, you need to create a custom `Item` component and then pass a `React.ForwardedRef` to its container.
 
 ```tsx
-interface ItemProps {
+export interface ItemProps {
   id: number;
-  data: any;
+  prop1: string;
+  prop2: string;
+  prop3: number;
 }
 
 function Item(props: ItemProps, ref: React.FowardedRef<HTMLLIElement>) {
   return <li ref={ref}>{props.data}</li>;
 }
+
+export default React.forwardRef(Item);
 ```
 
 :::note
@@ -39,6 +43,7 @@ You should make sure that your `Item` component pass ref to its container elemen
 
 ```tsx
 import InfiniteScroll from 'InfiniteScroll';
+import Item, { ItemProps } from 'components/Item';
 
 function InfiniteList() {
   const [data, setData] = useState<ItemProps>([]);
@@ -71,7 +76,7 @@ function InfiniteList() {
       <InfiniteScroll
         isLoading={isLoading}
         hasMore={true}
-        Item={React.forwardRef(Item)}
+        Item={Item}
         itemData={itemData}
         next={fetchNext}
       />
