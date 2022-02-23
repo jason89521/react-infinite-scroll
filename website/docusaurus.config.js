@@ -67,7 +67,7 @@ const config = {
         links: [
           {
             label: 'Docs',
-            to: 'docs',
+            to: '/',
           },
           {
             label: 'Blog',
