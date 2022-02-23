@@ -59,3 +59,9 @@ The properties that will be passed to `Item` component. Its type should be the s
 ### `next`
 
 If `isLoading` is `false` and `hasMore` is `true`, then this function will be called when this last item is displayed in the viewport.
+
+### `threshold`
+
+Indicate at what percentage of the last item's visibility the `next` function should be called. 0 means `next` will be called as soon as the last item shows up in the viewport. 1 means that `next` will be called only when the last item is fully visible in the viewport.
+
+Default value is `0`.
