@@ -24,6 +24,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          routeBasePath: '/',
           path: '../docs',
           sidebarPath: require.resolve('./sidebars.js'),
         },
@@ -66,7 +67,7 @@ const config = {
         links: [
           {
             label: 'Docs',
-            to: 'docs',
+            to: '/',
           },
           {
             label: 'Blog',

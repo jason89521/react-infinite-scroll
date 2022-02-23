@@ -20,6 +20,11 @@ const sidebars = {
       label: 'Introduction',
     },
     {
+      type: 'doc',
+      id: 'getting-started',
+      label: 'Getting Started',
+    },
+    {
       'API Reference': ['api/infinite-scroll'],
     },
   ],

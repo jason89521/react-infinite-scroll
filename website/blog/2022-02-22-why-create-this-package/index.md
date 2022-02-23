@@ -7,6 +7,8 @@ Hi all, I'm Xuan, the author of this package. In this post I want to talk about 
 
 I started learning front-end development about 6 months ago. During the time I learned front-end knowledge, I found that there are so many awesome packages in NPM. This does motivate me to create my own package.
 
+<!--truncate-->
+
 However, I didn't know what kind of package I want to create. So I decided to practice React by finishing the projects on [Frontend Mentor](https://www.frontendmentor.io/) until I find out what kind of package I want to create.
 
 At the end of January, Dcard provided a job opportunity of frontend intern. It required job seeker to complete a project that should call GitHub API to display the list of one user's repositories. The list should load 10 repositories at the first time. When user scrolls down to the bottom of the list, it should load the next 10 repositories until there is no more repository to load.
@@ -29,6 +31,6 @@ Writing a library package is really interesting to me. I got really excited when
 - Inverse direction to scroll
 - Another approach to use infinitely scrolling by using hook
 
-If you like this package, please give me a star on GitHub. I will very happy to see there are people who like this package.
+If you like this package, please give me a star on GitHub. I will be very happy seeing that there are people like this package.
 
 See you next time!

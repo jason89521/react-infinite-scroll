@@ -1,88 +1,16 @@
 ---
 id: intro
 title: Introduction
-sidebar_position: 1
 ---
 
 # Introduction
 
-React Infinite Scroll is an easy-to-use React component which implements the functionality of infinitely scrolling. It helps you write less code when you want some components in your application to scroll infinitely. Furthermore, **it doesn't pollute the DOM structure of your application**, so you don't have to worry about doing extra styling.
+React Infinite Scroll is an component which implements the functionality of infinitely scrolling. It helps you write less code when you want a component scroll infinitely in your application.
 
-## Installation
+## Easy to use
 
-You can use `yarn` or `npm` to install this package.
+To make React Infinite Scroll work, you just need to tell it whether your application is loading and are there more data to load, then create your `Item` component with `React.forwardRef` and an array with a specific type. Finally, pass a function which should be called when the last item displayed in the viewport.
 
-```bash
-# use yarn
-yarn add @yuxuan-zheng/react-infinite-scroll
-# use npm
-npm install @yuxuan-zheng/react-infinite-scroll
-```
+## No pollution
 
-## Create your `Item` component
-
-To use React Infinite Scroll, you need to create a custom `Item` component and then pass a `React.ForwardedRef` to its container.
-
-```tsx
-interface ItemProps {
-  id: number;
-  data: any;
-}
-
-function Item(props: ItemProps, ref: React.FowardedRef<HTMLLIElement>) {
-  return <li ref={ref}>{props.data}</li>;
-}
-```
-
-:::note
-
-You should make sure that your `Item` component pass ref to its container element, otherwise React Infinite Scroll will not work properly.
-
-:::
-
-## Create a component with `InfiniteScroll`
-
-```tsx
-import InfiniteScroll from 'InfiniteScroll';
-
-function InfiniteList() {
-  const [data, setData] = useState<ItemProps>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [page, setpage] = useState(0);
-
-  useEffect(() => {
-    // the return type of fakeApi is Promise<ItemProps[]>
-    fakeApi(page).then(initData => {
-      setData(initData);
-      setPage(page + 1);
-    });
-  }, []);
-
-  const fetchNext = async () => {
-    setIsLoading(true);
-    const newData = await fakeApi(page);
-    setData([...data, ...newData]);
-    setpage(page + 1);
-    setIsLoading(false);
-  };
-
-  const itemData = data.map(datum => ({
-    key: datum.id,
-    props: datum,
-  }));
-
-  return (
-    <ul>
-      <InfiniteScroll
-        isLoading={isLoading}
-        hasMore={true}
-        Item={React.forwardRef(Item)}
-        itemData={itemData}
-        next={fetchNext}
-      />
-    </ul>
-  );
-}
-```
-
-The 5 properties in the above example are required. For more information about these properties, please see the [API Reference page.](api/infinite-scroll.md)
+React Infinite Scroll does not add extra HTML elements to your application. That is, you don't have to worry about adding extra styling because it doesn't break you DOM structure.
