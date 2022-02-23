@@ -64,4 +64,4 @@ If `isLoading` is `false` and `hasMore` is `true`, then this function will be ca
 
 Indicate at what percentage of the last item's visibility the `next` function should be called. 0 means `next` will be called as soon as the last item shows up in the viewport. 1 means that `next` will be called only when the last item is fully visible in the viewport.
 
-Default value is `0`.
+The range of `threshold` is 0 ~ 1, and the default value is `0`.
