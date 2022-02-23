@@ -1,6 +1,6 @@
 export interface Data {
   id: number;
-  username: string;
+  title: string;
 }
 
 export default function fakeApi(page: number) {
@@ -9,7 +9,7 @@ export default function fakeApi(page: number) {
   const end = start + perPage;
   const data: Data[] = [];
   for (let i = start; i < end; i++) {
-    data.push({ id: i, username: `User ${i}` });
+    data.push({ id: i, title: `User ${i}` });
   }
 
   return new Promise<Data[]>(resolve => {
