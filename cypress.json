@@ -1,0 +1,7 @@
+{
+  "projectId": "69vskn",
+  "component": {
+    "componentFolder": "src",
+    "testFiles": "**/*spec.{js,jsx,ts,tsx}"
+  }
+}

@@ -1,15 +1,20 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@media (max-width: 75em) {
-  html {
-    font-size: 75%;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (max-width: 31.25em) {
-  html {
-    font-size: 50%;
-  }
+ul {
+  list-style-type: none;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 500px;
+  overflow: auto;
+}
+
+li {
+  background-color: orange;
+  min-height: 100px;
 }

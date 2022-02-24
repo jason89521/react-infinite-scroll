@@ -3,6 +3,8 @@ export interface Data {
   title: string;
 }
 
+export const requestDuration = 500;
+
 export default function fakeApi(page: number) {
   const perPage = 10;
   const start = page * perPage;
@@ -15,6 +17,6 @@ export default function fakeApi(page: number) {
   return new Promise<Data[]>(resolve => {
     setTimeout(() => {
       resolve(data);
-    }, 500);
+    }, requestDuration);
   });
 }

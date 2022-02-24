@@ -4,7 +4,11 @@ import InfiniteScroll from 'InfiniteScroll';
 import fakeApi, { Data } from 'fakeApi';
 import 'index.css';
 
-function BasicExample() {
+interface Props {
+  threshold: number;
+}
+
+function ThresholdExample({ threshold }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [data, setData] = useState<Data[]>([]);
@@ -41,9 +45,10 @@ function BasicExample() {
         itemData={itemData}
         Item={ListItem}
         next={next}
+        threshold={threshold}
       />
     </ul>
   );
 }
 
-export default BasicExample;
+export default ThresholdExample;
