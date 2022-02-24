@@ -13,4 +13,4 @@ To make React Infinite Scroll work, you just need to tell it whether your applic
 
 ## No pollution
 
-React Infinite Scroll does not add extra HTML elements to your application. That is, you don't have to worry about adding extra styling because it doesn't break you DOM structure.
+React Infinite Scroll does not add extra HTML elements to your application. That is, you don't have to worry about adding extra styling because it doesn't break your DOM structure.
