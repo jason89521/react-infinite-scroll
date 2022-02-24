@@ -26,7 +26,8 @@
     "build:demo": "tsc && vite build",
     "prepare": "yarn build",
     "preview": "vite preview",
-    "test": "cypress open-ct"
+    "cypress": "cypress open-ct",
+    "test": "cypress run-ct"
   },
   "devDependencies": {
     "@cypress/react": "^5.12.3",
