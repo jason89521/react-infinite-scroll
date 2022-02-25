@@ -1,13 +1,14 @@
 {
   "name": "@yuxuan-zheng/react-infinite-scroll",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A react compontent implements infinite scroll functionality",
   "keywords": [
     "react",
     "infinite scroll",
     "react component",
     "react infinite scroll",
-    "react hooks"
+    "react hooks",
+    "reverse scrolling"
   ],
   "files": [
     "dist",

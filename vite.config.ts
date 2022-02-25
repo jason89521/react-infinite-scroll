@@ -26,6 +26,7 @@ const buildLibConfig: UserConfigExport = {
         globals: {
           react: 'React',
         },
+        exports: 'named',
       },
     },
   },
@@ -38,7 +39,7 @@ export default defineConfig(({ command, mode }) => {
 
   // run yarn build
   if (mode === 'lib') return buildLibConfig;
-  
+
   // run yarn build:demo
   return buildDemoConfig;
 });
