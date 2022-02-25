@@ -25,7 +25,7 @@ const sidebars = {
       label: 'Getting Started',
     },
     {
-      'API Reference': ['api/infinite-scroll'],
+      'API Reference': ['api/infinite-scroll', 'api/useScrollToOld'],
     },
   ],
 };

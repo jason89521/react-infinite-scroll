@@ -4,9 +4,10 @@
   "description": "A react compontent implements infinite scroll functionality",
   "keywords": [
     "react",
-    "infinite-scroll",
-    "react-component",
-    "react-infinite-scroll"
+    "infinite scroll",
+    "react component",
+    "react infinite scroll",
+    "react hooks"
   ],
   "files": [
     "dist",

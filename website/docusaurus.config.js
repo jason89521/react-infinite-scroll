@@ -41,6 +41,12 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [
+        {
+          name: 'keywords',
+          content: 'react, react component, react hooks, react infinite scroll, infinite scroll',
+        },
+      ],
       navbar: {
         title: 'React Infinite Scroll',
         // logo: {
