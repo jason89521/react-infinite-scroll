@@ -3,7 +3,7 @@ export interface Data {
   title: string;
 }
 
-export const requestDuration = 500;
+export const requestDuration = 1500;
 
 export default function fakeApi(page: number) {
   const perPage = 10;

@@ -1,1 +1,1 @@
-export { default } from '../lib';
+export { default, useScrollToOld } from '../lib';
