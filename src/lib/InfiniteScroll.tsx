@@ -51,13 +51,8 @@ function InfiniteScroll<T, P extends HTMLElement>({
 
   const renderedItems = itemData.map((datum, idx) => {
     const key = datum.key !== undefined ? datum.key : idx;
-    if (reverse) {
-      const ref = idx === 0 ? observerRef : null;
-      return <Item key={key} ref={ref} {...datum.props} />;
-    }
-    
-    const isLast = itemData.length - 1 === idx;
-    const ref = isLast ? observerRef : null;
+    const isObserveTarget = reverse ? idx === 0 : itemData.length - 1 === idx;
+    const ref = isObserveTarget ? observerRef : null;
     return <Item key={key} ref={ref} {...datum.props} />;
   });
 
