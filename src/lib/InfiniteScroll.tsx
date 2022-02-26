@@ -35,6 +35,8 @@ function InfiniteScroll<T, P extends HTMLElement>({
       if (isLoading) return;
 
       if (observer.current) observer.current.disconnect();
+      if (!element) return;
+
       // Create a new IntersectionObserver instance because hasMore or next may be changed.
       observer.current = new IntersectionObserver(
         entries => {
@@ -42,9 +44,9 @@ function InfiniteScroll<T, P extends HTMLElement>({
             next();
           }
         },
-        { threshold: threshold }
+        { threshold }
       );
-      if (element) observer.current.observe(element);
+      observer.current.observe(element);
     },
     [hasMore, isLoading, next, threshold]
   );
