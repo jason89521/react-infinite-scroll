@@ -8,7 +8,7 @@ interface Data<T> {
 interface Props<T, P extends HTMLElement> {
   isLoading: boolean;
   hasMore: boolean;
-  Item: React.ForwardRefExoticComponent<T & React.RefAttributes<P>>;
+  Item: React.ForwardRefExoticComponent<T & React.RefAttributes<P>> | string;
   itemData: Data<T>[];
   next: () => unknown;
   threshold?: number;

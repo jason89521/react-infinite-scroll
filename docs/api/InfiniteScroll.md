@@ -16,7 +16,7 @@ interface Data<T> {
 interface Props<T, P extends HTMLElement> {
   isLoading: boolean;
   hasMore: boolean;
-  Item: React.ForwardRefExoticComponent<T & React.RefAttributes<P>>;
+  Item: React.ForwardRefExoticComponent<T & React.RefAttributes<P>> | string;
   itemData: Data<T>[];
   next: () => unknown;
   threshold?: number;
@@ -48,7 +48,7 @@ Used to determine whether there are more items to display. If the last item is d
 
 ### `Item`
 
-A React component with `React.forwardedRef`. `InfiniteScroll` will pass a callback function to the last item's ref in order to determine whether the last item is displayed in the viewport.
+A React component with `React.forwardedRef` or a string like `li`. `InfiniteScroll` will pass a callback function to the last item's ref in order to determine whether the last item is displayed in the viewport.
 
 ### `itemData`
 
