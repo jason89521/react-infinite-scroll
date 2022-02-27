@@ -21,6 +21,7 @@ interface Props<T, P extends HTMLElement> {
   next: () => unknown;
   threshold?: number;
   root?: Element | Document | undefined | null;
+  rootMargin?: string;
   reverse?: boolean;
 }
 
@@ -32,6 +33,7 @@ declare function InfiniteScroll<T, P extends HTMLElement>({
   next,
   threshold,
   root,
+  rootMargin,
   reverse,
 }: Props<T, P>): JSX.Element;
 ```
@@ -75,6 +77,16 @@ The range of `threshold` is 0 ~ 1, and the default value is `0`.
 ### `root`
 
 This property will be used as the viewport for checking visibility of the last or the first item. Must be the ancestor of the item. Defaults to the browser viewport.
+
+### `rootMargin`
+
+A string which specifies a set of offsets to add to the root's bounding box.
+
+:::tip
+
+Since `InfiniteScroll` is implemented with IntersectionObserver, you can find more information about `threshold`, `root` and `rootMargin` on [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
+
+:::
 
 ### `reverse`
 

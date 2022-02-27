@@ -13,6 +13,7 @@ interface Props<T, P extends HTMLElement> {
   next: () => unknown;
   threshold?: number;
   root?: Element | Document | null;
+  rootMargin?: string;
   reverse?: boolean;
 }
 
@@ -24,6 +25,7 @@ function InfiniteScroll<T, P extends HTMLElement>({
   next,
   threshold = 0,
   root = null,
+  rootMargin = '0px',
   reverse,
 }: Props<T, P>) {
   const observer = useRef<IntersectionObserver>();
@@ -46,11 +48,11 @@ function InfiniteScroll<T, P extends HTMLElement>({
             next();
           }
         },
-        { threshold, root }
+        { threshold, root, rootMargin }
       );
       observer.current.observe(element);
     },
-    [hasMore, isLoading, next, threshold, root]
+    [hasMore, isLoading, next, threshold, root, rootMargin]
   );
 
   const renderedItems = itemData.map((datum, idx) => {
