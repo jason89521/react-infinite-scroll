@@ -20,6 +20,7 @@ interface Props<T, P extends HTMLElement> {
   itemData: Data<T>[];
   next: () => unknown;
   threshold?: number;
+  root?: Element | Document | undefined | null;
   reverse?: boolean;
 }
 
@@ -30,6 +31,7 @@ declare function InfiniteScroll<T, P extends HTMLElement>({
   itemData,
   next,
   threshold,
+  root,
   reverse,
 }: Props<T, P>): JSX.Element;
 ```
@@ -69,6 +71,10 @@ If `isLoading` is `false` and `hasMore` is `true`, then this function will be ca
 Indicate at what percentage of the last item's visibility the `next` function should be called. 0 means `next` will be called as soon as the last item shows up in the viewport. 1 means that `next` will be called only when the last item is fully visible in the viewport.
 
 The range of `threshold` is 0 ~ 1, and the default value is `0`.
+
+### `root`
+
+This property will be used as the viewport for checking visibility of the last or the first item. Must be the ancestor of the item. Defaults to the browser viewport.
 
 ### `reverse`
 
