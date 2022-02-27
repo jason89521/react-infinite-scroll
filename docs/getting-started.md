@@ -85,4 +85,4 @@ function InfiniteList() {
 }
 ```
 
-The 5 properties in the above example are required. For more information about these properties, please see the [API Reference page.](api/infinite-scroll.md)
+The 5 properties in the above example are required. For more information about these properties, please see the [API Reference page.](api/InfiniteScroll.md)
