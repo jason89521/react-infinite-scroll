@@ -5,7 +5,8 @@ import ReverseExample from 'components/ReverseExample';
 function App() {
   return (
     <div>
-      <ReverseExample />
+      {/* <ReverseExample /> */}
+      <BasicExample />
     </div>
   );
 }
