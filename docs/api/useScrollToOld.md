@@ -54,31 +54,21 @@ function ReverseExample() {
       setData([...initData].reverse());
       if (!containerRef.current) return;
       const scrollTop = containerRef.current.scrollHeight - containerRef.current.clientHeight;
-      containerRef.current.scrollTo({ top: scrollTop });
+      containerRef.current?.scrollTo({ top: scrollTop });
     });
   }, []);
 
-  const itemData = data.map(datum => {
-    const key = datum.id;
-    const props: ListItemProps = {
-      id: datum.id,
-      title: datum.title,
-      children: <div>I am a JSX element</div>,
-    };
-    return { key, props };
-  });
-
   return (
     <ul ref={containerRef}>
-      <InfiniteScroll
-        isLoading={isLoading}
-        hasMore={true}
-        itemData={itemData}
-        Item={ListItem}
-        next={next}
-        threshold={1}
-        reverse
-      />
+      <InfiniteScroll isLoading={isLoading} hasMore={true} next={next} threshold={1} reverse>
+        {data.map(datum => {
+          return (
+            <ListItem key={datum.id} title={datum.title} id={datum.id}>
+              <div>I am a JSX element</div>
+            </ListItem>
+          );
+        })}
+      </InfiniteScroll>
     </ul>
   );
 }

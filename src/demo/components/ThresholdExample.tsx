@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ListItem, { ListItemProps } from './ListItem';
+import ListItem from './ListItem';
 import InfiniteScroll from 'InfiniteScroll';
 import fakeApi, { Data } from 'fakeApi';
 import 'index.css';
@@ -27,26 +27,17 @@ function ThresholdExample({ threshold }: Props) {
     });
   }, []);
 
-  const itemData = data.map(datum => {
-    const key = datum.id;
-    const props: ListItemProps = {
-      id: datum.id,
-      title: datum.title,
-      children: <div>I am a JSX element</div>,
-    };
-    return { key, props };
-  });
-
   return (
     <ul>
-      <InfiniteScroll
-        isLoading={isLoading}
-        hasMore={page < 3}
-        itemData={itemData}
-        Item={ListItem}
-        next={next}
-        threshold={threshold}
-      />
+      <InfiniteScroll isLoading={isLoading} hasMore={page < 3} next={next} threshold={threshold}>
+        {data.map(datum => {
+          return (
+            <ListItem key={datum.id} title={datum.title} id={datum.id}>
+              <div>I am a JSX element</div>
+            </ListItem>
+          );
+        })}
+      </InfiniteScroll>
     </ul>
   );
 }

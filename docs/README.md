@@ -9,7 +9,7 @@ title: Introduction
 
 ## Easy to use
 
-To make `InfiniteScroll` work, you just need to tell it whether your application is loading and are there more data to load, then create your `Item` component with `React.forwardRef` and an array with a specific type. Finally, pass a function which should be called when the last item displayed in the viewport.
+To make `InfiniteScroll` work, you just need to tell it whether your application is loading, whether there are more data and the function you want to call when it reach bottom
 
 ## No pollution
 

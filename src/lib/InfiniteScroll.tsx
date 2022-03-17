@@ -1,33 +1,26 @@
 import React, { useCallback, useRef } from 'react';
 
-interface Data<T> {
-  key?: React.Key;
-  props: T;
-}
-
-interface Props<T, P extends HTMLElement> {
+interface Props {
   isLoading: boolean;
   hasMore: boolean;
-  Item: React.ForwardRefExoticComponent<T & React.RefAttributes<P>> | string;
-  itemData: Data<T>[];
   next: () => unknown;
   threshold?: number;
   root?: Element | Document | null;
   rootMargin?: string;
   reverse?: boolean;
+  children?: JSX.Element[];
 }
 
-function InfiniteScroll<T, P extends HTMLElement>({
+function InfiniteScroll({
   isLoading,
   hasMore,
-  Item,
-  itemData,
   next,
   threshold = 0,
   root = null,
   rootMargin = '0px',
   reverse,
-}: Props<T, P>) {
+  children = [],
+}: Props) {
   const observer = useRef<IntersectionObserver>();
   // This callback ref will be called when it is dispatched to an element or detached from an element,
   // or when the callback function changes.
@@ -55,14 +48,17 @@ function InfiniteScroll<T, P extends HTMLElement>({
     [hasMore, isLoading, next, threshold, root, rootMargin]
   );
 
-  const renderedItems = itemData.map((datum, idx) => {
-    const key = datum.key !== undefined ? datum.key : idx;
-    const isObserveTarget = reverse ? idx === 0 : itemData.length - 1 === idx;
-    const ref = isObserveTarget ? observerRef : null;
-    return <Item key={key} ref={ref} {...datum.props} />;
-  });
+  return (
+    <>
+      {React.Children.map(children, (child, index) => {
+        if (!child) return;
 
-  return <>{renderedItems}</>;
+        const isObserveTarget = reverse ? index === 0 : children.length - 1 === index;
+        const ref = isObserveTarget ? observerRef : null;
+        return React.cloneElement(child, { ref });
+      })}
+    </>
+  );
 }
 
 export default InfiniteScroll;

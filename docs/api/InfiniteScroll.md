@@ -8,34 +8,27 @@ InfiniteScroll is a React component which uses IntersectionObserver to implement
 ## Parameters
 
 ```tsx
-interface Data<T> {
-  key?: React.Key;
-  props: T;
-}
-
-interface Props<T, P extends HTMLElement> {
+interface Props {
   isLoading: boolean;
   hasMore: boolean;
-  Item: React.ForwardRefExoticComponent<T & React.RefAttributes<P>> | string;
-  itemData: Data<T>[];
   next: () => unknown;
   threshold?: number;
-  root?: Element | Document | undefined | null;
+  root?: Element | Document | null;
   rootMargin?: string;
   reverse?: boolean;
+  children?: JSX.Element[];
 }
 
-declare function InfiniteScroll<T, P extends HTMLElement>({
+declare function InfiniteScroll({
   isLoading,
   hasMore,
-  Item,
-  itemData,
   next,
   threshold,
   root,
   rootMargin,
   reverse,
-}: Props<T, P>): JSX.Element;
+  children,
+}: Props): JSX.Element;
 ```
 
 ### `isLoading`
@@ -45,24 +38,6 @@ declare function InfiniteScroll<T, P extends HTMLElement>({
 ### `hasMore`
 
 Used to determine whether there are more items to display. If the last item is displayed in the viewport and `hasMore` is `true`, then `InfiniteScroll` will call `next()`.
-
-### `Item`
-
-A React component with `React.forwardedRef` or a string like `li`. `InfiniteScroll` will pass a callback function to the last item's ref in order to determine whether the last item is displayed in the viewport.
-
-### `itemData`
-
-An array of objects. The object in this array has 2 properties called `key` and `props`.
-
-#### `key`
-
-Since `InfiniteScroll` will use `map()` to generate the `Item` component, it needs a key to help React distinguish between components. If the items in `InfiniteScroll` will be deleted or moved, then you should specify a key.
-
-If `key` is not specified, then `InfiniteScroll` will use the index as a key.
-
-#### `props`
-
-The properties that will be passed to `Item` component. Its type should be the same as `Item`'s props.
 
 ### `next`
 
@@ -97,3 +72,7 @@ Set this property to `true` means that `InfiniteScroll` will call `next` when th
 If your `next` function prepend the new data to the previous data, the first item will always show up on the top. This will cause `InfiniteScroll` continuously call `next`. Make sure write some code to prevent this circumstance or use [`useScrollToOld`](./useScrollToOld.md);
 
 :::
+
+### `children`
+
+`InfiniteScroll` will pass ref to your children, if your children is a custom component, make sure using `React.forwardRef` to forward ref to its container.

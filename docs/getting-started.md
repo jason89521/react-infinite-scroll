@@ -14,44 +14,17 @@ yarn add @yuxuan-zheng/react-infinite-scroll
 npm install @yuxuan-zheng/react-infinite-scroll
 ```
 
-## Create your `Item` component
-
-To use React Infinite Scroll, you need to create a custom `Item` component and then pass a `React.ForwardedRef` to its container.
-
-```tsx
-export interface ItemProps {
-  id: number;
-  prop1: string;
-  prop2: string;
-  prop3: number;
-}
-
-function Item(props: ItemProps, ref: React.FowardedRef<HTMLLIElement>) {
-  return <li ref={ref}>{props.data}</li>;
-}
-
-export default React.forwardRef(Item);
-```
-
-:::note
-
-You should make sure that your `Item` component pass ref to its container element, otherwise React Infinite Scroll will not work properly.
-
-:::
-
 ## Create a component with `InfiniteScroll`
 
 ```tsx
-import InfiniteScroll from 'InfiniteScroll';
-import Item, { ItemProps } from 'components/Item';
+import InfiniteScroll from '@yuxuan-zheng/react-infinite-scroll';
 
 function InfiniteList() {
-  const [data, setData] = useState<ItemProps>([]);
+  const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [page, setpage] = useState(0);
 
   useEffect(() => {
-    // the return type of fakeApi is Promise<ItemProps[]>
     fakeApi(page).then(initData => {
       setData(initData);
       setPage(page + 1);
@@ -66,23 +39,30 @@ function InfiniteList() {
     setIsLoading(false);
   };
 
-  const itemData = data.map(datum => ({
-    key: datum.id,
-    props: datum,
-  }));
-
   return (
     <ul>
-      <InfiniteScroll
-        isLoading={isLoading}
-        hasMore={true}
-        Item={Item}
-        itemData={itemData}
-        next={fetchNext}
-      />
+      <InfiniteScroll isLoading={isLoading} hasMore={page < 3} next={fetchNext}>
+        {data.map(datum => {
+          return <li key={datum.id}>Hello</li>;
+        })}
+      </InfiniteScroll>
     </ul>
   );
 }
 ```
 
-The 5 properties in the above example are required. For more information about these properties, please see the [API Reference page.](api/InfiniteScroll.md)
+## Create your `Item` component
+
+You can also use a custom component in `InfiniteScroll`, but you should make sure the component pass `ref` to its container correctly.
+
+```tsx
+export interface ItemProps {
+  data: any;
+}
+
+function Item(props: ItemProps, ref: React.FowardedRef<HTMLLIElement>) {
+  return <li ref={ref}>{props.data}</li>;
+}
+
+export default React.forwardRef(Item);
+```
