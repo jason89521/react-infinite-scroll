@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useMemo } from 'react';
 
 interface Props {
   isLoading: boolean;
@@ -8,7 +8,7 @@ interface Props {
   root?: Element | Document | null;
   rootMargin?: string;
   reverse?: boolean;
-  children?: JSX.Element[];
+  children?: React.ReactNode;
 }
 
 function InfiniteScroll({
@@ -48,12 +48,17 @@ function InfiniteScroll({
     [hasMore, isLoading, next, threshold, root, rootMargin]
   );
 
+  const flattenChildren = useMemo(() => React.Children.toArray(children), [children]);
+
   return (
     <>
-      {React.Children.map(children, (child, index) => {
-        if (!child) return;
+      {React.Children.map(flattenChildren, (child, index) => {
+        if (!React.isValidElement(child)) {
+          process.env.NODE_ENV === 'development' && console.warn('You should use a valid element with InfiniteScroll');
+          return child;
+        }
 
-        const isObserveTarget = reverse ? index === 0 : children.length - 1 === index;
+        const isObserveTarget = reverse ? index === 0 : flattenChildren.length - 1 === index;
         const ref = isObserveTarget ? observerRef : null;
         return React.cloneElement(child, { ref });
       })}
