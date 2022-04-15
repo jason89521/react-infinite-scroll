@@ -16,7 +16,7 @@ interface Props {
   root?: Element | Document | null;
   rootMargin?: string;
   reverse?: boolean;
-  children?: JSX.Element[];
+  children?: React.ReactNode;
 }
 
 declare function InfiniteScroll({
