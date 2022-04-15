@@ -8,7 +8,7 @@ interface Props {
   root?: Element | Document | null;
   rootMargin?: string;
   reverse?: boolean;
-  children?: React.ReactNode;
+  children?: JSX.Element | JSX.Element[] | JSX.Element[][];
 }
 
 function InfiniteScroll({
@@ -19,7 +19,7 @@ function InfiniteScroll({
   root = null,
   rootMargin = '0px',
   reverse,
-  children = [],
+  children,
 }: Props) {
   const observer = useRef<IntersectionObserver>();
   // This callback ref will be called when it is dispatched to an element or detached from an element,
@@ -52,13 +52,13 @@ function InfiniteScroll({
 
   return (
     <>
-      {React.Children.map(flattenChildren, (child, index) => {
+      {flattenChildren.map((child, index) => {
         if (!React.isValidElement(child)) {
           process.env.NODE_ENV === 'development' && console.warn('You should use a valid element with InfiniteScroll');
           return child;
         }
 
-        const isObserveTarget = reverse ? index === 0 : flattenChildren.length - 1 === index;
+        const isObserveTarget = reverse ? index === 0 : index === flattenChildren.length - 1;
         const ref = isObserveTarget ? observerRef : null;
         return React.cloneElement(child, { ref });
       })}
