@@ -16,7 +16,7 @@
     "jsx": "react-jsx",
     "declaration": true,
     "declarationDir": "type",
-    "outDir": "temp"
+    "emitDeclarationOnly": true
   },
   "include": ["src/lib/index.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
